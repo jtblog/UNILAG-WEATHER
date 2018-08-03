@@ -1,0 +1,10 @@
+name: unilag-weather
+title:
+username:
+account: jtblog
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 393244
+bundleId: 1511928
+url: https://jtblog.shinyapps.io/unilag-weather/
+when: 1533142040.69772

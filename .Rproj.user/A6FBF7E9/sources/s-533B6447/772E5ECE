@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "584869714",
+    "hash" : "0",
     "id" : "772E5ECE",
-    "lastKnownWriteTime" : 1526421858,
-    "last_content_update" : 1526421858,
+    "lastKnownWriteTime" : 1533142476,
+    "last_content_update" : 1533142476171,
     "path" : "~/GitHub/UNILAG-WEATHER/app.R",
     "project_path" : "app.R",
     "properties" : {
+        "cursorPosition" : "35,41",
+        "scrollLine" : "30"
     },
     "relative_order" : 1,
     "source_on_save" : false,
