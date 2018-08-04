@@ -5,6 +5,6 @@ account: jtblog
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 393244
-bundleId: 1517505
+bundleId: 1518433
 url: https://jtblog.shinyapps.io/unilag-weather/
-when: 1533330681.58766
+when: 1533410147.19584
