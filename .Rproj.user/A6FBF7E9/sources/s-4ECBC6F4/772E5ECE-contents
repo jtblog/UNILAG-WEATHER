@@ -36,7 +36,7 @@ ui <- fluidPage(
             mainPanel(width = 12,
               
               # Output: Tabset w/ plot, summary, and table ----
-              tabsetPanel(type = "tabs",
+              tabsetPanel(type = "pills",
                           tabPanel("Plot", plotOutput("distPlot")),
                           tabPanel("Map", leafletOutput("map")),
                           tabPanel("Table", dataTableOutput("table"))
@@ -44,9 +44,10 @@ ui <- fluidPage(
             )
      ),
      column(4,
-            tabsetPanel(type = "tabs",
-                        tabPanel("app.R", ""),
-                        tabPanel("main.R", "")
+            tabsetPanel(type = "pills",
+              tabPanel("app.R", textAreaInput("appr", "APP", "Loading...", width = "100%", rows = 18, resize = "none")),
+              tabPanel("main.R", textAreaInput("mainr", "MAIN", "Loading...", width = "100%", rows = 18, resize = "none"))
+              
             )
      )
      
@@ -76,7 +77,8 @@ server <- function(input, output, session) {
      
    })
    
-   
+   updateTextAreaInput(session, "appr", value = getR0())
+   updateTextAreaInput(session, "mainr", value = getR1())
    
    opts = list(scrollX = TRUE,  scrollY = 300, extensions = 'Scroller', filter = 'top')
   output$table <- DT::renderDataTable(DT::datatable({
@@ -89,6 +91,7 @@ server <- function(input, output, session) {
      
      
    observe({
+     # tags$style(type='text/css', "#appr { vertical-align: middle; height: 50px; width: 100%; font-size: 30px;}")
      disable("lat")
      disable("long")
    })
