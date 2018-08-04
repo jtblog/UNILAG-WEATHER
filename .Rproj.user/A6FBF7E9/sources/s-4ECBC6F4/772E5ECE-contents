@@ -10,6 +10,7 @@
 library(shiny)
 library(shinyjs)
 library(leaflet)
+library(DT)
 source("rscript/main.R")
 dat = "";
 
@@ -74,11 +75,19 @@ server <- function(input, output, session) {
      yaxs
      
    })
-   opts = list(scrollX = TRUE,  scrollY = 300, extensions = 'Scroller'
-               
-               )
-   output$table <- renderDataTable(dat, options = opts)
    
+   
+   
+   opts = list(scrollX = TRUE,  scrollY = 300, extensions = 'Scroller', filter = 'top')
+  output$table <- DT::renderDataTable(DT::datatable({
+    dat <<- switch(input$tf, 
+                   hrly = tweakframe("hourly"),
+                   drly = tweakframe("daily")
+    )
+    data <- dat
+    },options = opts))
+     
+     
    observe({
      disable("lat")
      disable("long")
@@ -99,4 +108,4 @@ server <- function(input, output, session) {
 getData(3.399259, 6.519250)
 shinyApp(ui = ui, server = server)
 
-# deployApp();
+# deployApp()
