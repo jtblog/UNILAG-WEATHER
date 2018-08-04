@@ -108,4 +108,5 @@ server <- function(input, output, session) {
 getData(3.399259, 6.519250)
 shinyApp(ui = ui, server = server)
 
+# library(rsconnect)
 # deployApp()
