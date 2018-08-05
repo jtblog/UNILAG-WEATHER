@@ -11,6 +11,8 @@ library(shiny)
 library(shinyjs)
 library(leaflet)
 library(DT)
+library(ggplot2)
+library(plotly)
 source("rscript/main.R")
 dat = "";
 
@@ -37,7 +39,7 @@ ui <- fluidPage(
               
               # Output: Tabset w/ plot, summary, and table ----
               tabsetPanel(type = "pills",
-                          tabPanel("Plot", plotOutput("distPlot")),
+                          tabPanel("Plot", plotlyOutput("distPlot")),
                           tabPanel("Map", leafletOutput("map")),
                           tabPanel("Table", dataTableOutput("table"))
               )
@@ -64,14 +66,14 @@ ui <- fluidPage(
 # Define server
 server <- function(input, output, session) {
   
-   output$distPlot <- renderPlot({
+   output$distPlot <- renderPlotly({
      dat <<- switch(input$tf, 
             hrly = tweakframe("hourly"),
             drly = tweakframe("daily")
             )
      yaxs <<- switch(input$scol,
-                   hum = ggplot(aes(x=time, y=humidity), data=dat) + geom_line(),
-                   pres = ggplot(aes(x=time, y=pressure), data=dat) + geom_line()
+                   hum = ggplotly( ggplot(aes(x=time, y=humidity), data=dat) + geom_line() ),
+                   pres = ggplotly( ggplot(aes(x=time, y=pressure), data=dat) + geom_line() )
               )
      yaxs
      

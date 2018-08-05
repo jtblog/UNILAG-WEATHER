@@ -5,7 +5,7 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "2699888979",
+    "hash" : "0",
     "id" : "819DF1C8",
     "lastKnownWriteTime" : 1533416639,
     "last_content_update" : 1533416639961,
@@ -13,7 +13,7 @@
     "project_path" : "rscript/main.R",
     "properties" : {
         "cursorPosition" : "32,25",
-        "scrollLine" : "5"
+        "scrollLine" : "0"
     },
     "relative_order" : 3,
     "source_on_save" : false,
