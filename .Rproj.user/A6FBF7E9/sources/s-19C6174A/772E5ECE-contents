@@ -31,7 +31,10 @@ ui <- fluidPage(
             textInput("long", "Longitude:", value = "3.399259"),
             textInput("lat", "Latitude:", value = "6.519250"),
             radioButtons("tf", "Timeframe (X):", c("Hourly" = "hrly", "Daily" = "drly")),
-            radioButtons("scol", "Variable (Y):", c("Humidity" = "hum", "Pressure" = "pres"))
+            radioButtons("scol", "Variable (Y):", c("Humidity" = "hum", "Pressure" = "pres", 
+                                                    "Dew Point" = "dwpnt", "Wind Speed" = "wndspd",
+                                                    "Wind Gust" = "wndgst", "Cloud Cover" = "cldcvr",
+                                                    "Ozone" = "ozn"))
             
      ),
      column(6,
@@ -73,7 +76,12 @@ server <- function(input, output, session) {
             )
      yaxs <<- switch(input$scol,
                    hum = ggplotly( ggplot(aes(x=time, y=humidity), data=dat) + geom_line() ),
-                   pres = ggplotly( ggplot(aes(x=time, y=pressure), data=dat) + geom_line() )
+                   pres = ggplotly( ggplot(aes(x=time, y=pressure), data=dat) + geom_line() ),
+                   dwpnt = ggplotly( ggplot(aes(x=time, y=dewPoint), data=dat) + geom_line() ),
+                   wndspd = ggplotly( ggplot(aes(x=time, y=windSpeed), data=dat) + geom_line() ),
+                   wndgst = ggplotly( ggplot(aes(x=time, y=windGust), data=dat) + geom_line() ),
+                   cldcvr = ggplotly( ggplot(aes(x=time, y=cloudCover), data=dat) + geom_line() ),
+                   ozn = ggplotly( ggplot(aes(x=time, y=ozone), data=dat) + geom_line() )
               )
      yaxs
      
