@@ -1,4 +1,0 @@
-library(readr)
-a = read_file("test.R")
-print(a)
-# Sys.Date() - 365
